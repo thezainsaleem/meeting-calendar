@@ -36,6 +36,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'pry-rails', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec_junit_formatter'
+  gem 'simplecov', '~> 0.12.0'
 end
 
 group :development do
