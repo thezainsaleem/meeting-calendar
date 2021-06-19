@@ -1,2 +1,3 @@
-class AllowlistedJwt < ApplicationRecord
+class  AllowlistedJwt < ApplicationRecord
+
 end

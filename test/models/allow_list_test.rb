@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AllowlistedJwtTest < ActiveSupport::TestCase
+class AllowListTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
