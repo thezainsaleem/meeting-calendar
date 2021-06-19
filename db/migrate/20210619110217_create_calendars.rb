@@ -1,6 +1,6 @@
-class CreateAgendas < ActiveRecord::Migration[5.2]
+class CreateCalendars < ActiveRecord::Migration[5.2]
   def change
-    create_table :agendas do |t|
+    create_table :calendars do |t|
       t.references :mentor, null: false, index: true
 
       t.timestamps

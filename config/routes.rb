@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :mentors, only: [:show] do
-        resources :agendas, module: :mentors, only: [:index]
+        resource :calendar, module: :mentors, only: [:show] do
+          member do
+            # resources :months, module: mentors, only: [:show]
+            # resources :weeks, module: mentors, only: [:show]
+            resources :days, module: :calendars, only: [:show]
+            resources :slots, module: :calendars, only: [:create, :destroy]
+          end
+        end
       end
     end
   end

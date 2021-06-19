@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_110217) do
+ActiveRecord::Schema.define(version: 2021_06_19_111359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "agendas", force: :cascade do |t|
-    t.bigint "mentor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["mentor_id"], name: "index_agendas_on_mentor_id"
-  end
 
   create_table "allow_lists", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,11 +29,32 @@ ActiveRecord::Schema.define(version: 2021_06_19_110217) do
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
+  create_table "calendars", force: :cascade do |t|
+    t.bigint "mentor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_calendars_on_mentor_id"
+  end
+
   create_table "mentors", force: :cascade do |t|
     t.string "name", null: false
     t.string "time_zone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.bigint "mentor_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "calendar_id", null: false
+    t.datetime "start", null: false
+    t.datetime "end", null: false
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_id"], name: "index_slots_on_calendar_id"
+    t.index ["mentor_id"], name: "index_slots_on_mentor_id"
+    t.index ["user_id"], name: "index_slots_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
