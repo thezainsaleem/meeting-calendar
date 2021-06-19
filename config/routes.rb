@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, defaults: { format: :json }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
             # resources :months, module: mentors, only: [:show]
             # resources :weeks, module: mentors, only: [:show]
             resources :days, module: :calendars, only: [:show]
-            resources :slots, module: :calendars, only: [:create, :destroy]
+            resources :slots, module: :calendars, only: %i[create destroy]
           end
         end
       end

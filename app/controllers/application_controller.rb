@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   include ActionController::MimeResponds
-  AUTHENTICATE_USER_EXCEPT_CONTROLLERS = ["sessions"]
-  before_action :authenticate_user! 
+  AUTHENTICATE_USER_EXCEPT_CONTROLLERS = ["sessions"].freeze
+  before_action :authenticate_user!
   before_action :handle_unauthenticated
 
   respond_to :json
@@ -9,14 +11,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_user!
-    unless AUTHENTICATE_USER_EXCEPT_CONTROLLERS.include?(params[:controller])
-      super
-     end
+    return if AUTHENTICATE_USER_EXCEPT_CONTROLLERS.exclude?(params[:controller])
+    super
   end
 
   def handle_unauthenticated
-    unless current_user
-      render json: { error: 'Authentication Error'}, status: 403
-    end
+    return if current_user
+    render json: { error: "Authentication Error" }, status: 403
   end
 end
