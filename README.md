@@ -2,21 +2,25 @@
 
 Things you may want to cover:
 
-* Ruby version
+### Ruby version
   2.5
 
-* System dependencies
-  POSTGRES
-  Redis
+### System dependencies
+- POSTGRES
+- Redis
 
-* Configuration
+### Configuration
   Make sure to set postgres password in database.yml
 
-* Database creation
+### Database creation
+  ```ruby
   rails db:create
+  ```
 
-* Database initialization
+### Database initialization
+  ```ruby
   rails db:migrate
+  ```
 
 # How to run the test suite
   ```ruby
