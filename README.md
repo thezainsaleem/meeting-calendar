@@ -21,6 +21,12 @@ Things you may want to cover:
   ```ruby
   rails db:migrate
   ```
+### Loading Seed Data
+  ```ruby
+  rails db:seed
+  ```
+  
+  This will create one user and one mentor with clean calendar
 
 # How to run the test suite
   ```ruby
