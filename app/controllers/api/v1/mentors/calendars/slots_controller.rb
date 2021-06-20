@@ -6,18 +6,20 @@ module Api
       module Calendars
         class SlotsController < ApplicationController
           # skip_before_action :verify_authenticity_token
-
           before_action :slot_params, only: [:create]
           before_action :load_mentor
 
+          # rubocop:disable Metrics/AbcSize
           def create
             @slot = @mentor.calendar.slots.create(slot_params.merge(mentor: @mentor, user: current_user))
             if @slot.persisted?
+              SyncAgenda.perform_async({ mentor_id: @mentor.id, calendar_id: @mentor.calendar.id }.to_h)
               render json: { mesage: created_success_message(@slot, @mentor) }, status: :ok
             else
               render json: { errors: @slot.errors.full_messages }, status: :ok
             end
           end
+          # rubocop:enable Metrics/AbcSize
 
           def destroy
             @slot = Slot.find_by(id: params[:id]).destroy

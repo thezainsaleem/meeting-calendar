@@ -3,7 +3,7 @@
 class Slot < ApplicationRecord
   belongs_to :calendar
   belongs_to :mentor
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :start, presence: true, length: { in: 1..254 }
   validates :reason, presence: true
