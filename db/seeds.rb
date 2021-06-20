@@ -6,3 +6,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+1.times do |i|
+  User.create(email: "admin@example.com", password: "password", password_confirmation: "password")
+end
+
+1.times do |i|
+  mentor = Mentor.create(name: "Dummy", time_zone: "-03:00")
+  Calendar.create(mentor: mentor)
+end

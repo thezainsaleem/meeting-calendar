@@ -5,7 +5,7 @@ namespace :agenda_syncer do
   task sync_calendars: :environment do
     Mentor.all.includes(:calendar).find_each.map do |mentor|
       AgendaSyncer.new({
-        mentor_id: mentor.id
+        mentor_id: mentor.id,
         calendar_id: mentor.calendar.id
       }).call
     end

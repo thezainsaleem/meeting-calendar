@@ -16,7 +16,7 @@ module Api
               SyncAgenda.perform_async({ mentor_id: @mentor.id, calendar_id: @mentor.calendar.id }.to_h)
               render json: { mesage: created_success_message(@slot, @mentor) }, status: :ok
             else
-              render json: { errors: @slot.errors.full_messages }, status: :ok
+              render json: { errors: @slot.errors.full_messages }, status: 400
             end
           end
           # rubocop:enable Metrics/AbcSize
