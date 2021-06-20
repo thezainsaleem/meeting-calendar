@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :mentors, only: [:show] do
+      resources :mentors, only: [:show, :index] do
         resource :calendar, module: :mentors, only: [:show] do
           member do
             # resources :months, module: mentors, only: [:show]
