@@ -16,6 +16,7 @@ gem "puma", "~> 3.11"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.2.1"
 
+gem 'whenever', require: false
 gem "webmock"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
