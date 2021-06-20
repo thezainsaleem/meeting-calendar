@@ -7,6 +7,7 @@ Things you may want to cover:
 
 * System dependencies
   POSTGRES
+  Redis
 
 * Configuration
   Make sure to set postgres password in database.yml
@@ -30,6 +31,8 @@ Things you may want to cover:
 
 # Run App
   ```ruby
+  redis-server
+  bundle exec sidekiq
   rails server
   ```
 
